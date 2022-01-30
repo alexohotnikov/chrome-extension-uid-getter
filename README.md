@@ -1,4 +1,4 @@
-# Chrome Extension
+# ![icon](/icons/icon.png) Chrome Extension
 
 This extension used me for fast copy UID from cookie to clipboard.
 

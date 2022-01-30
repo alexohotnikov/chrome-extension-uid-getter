@@ -3,12 +3,9 @@ const buttonElement = document.querySelector('button');
 const saveTextToClipboard = (text) => {
     var textArea = document.createElement("textarea");
     textArea.value = text;
-
-    // Avoid scrolling to bottom
-    textArea.style.top = "0";
-    textArea.style.left = "0";
-    textArea.style.opacity = "0"
-    textArea.style.height = "0"
+    // hidden element
+    textArea.style.opacity = "0";
+    textArea.style.maxHeight = "0";
     document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();

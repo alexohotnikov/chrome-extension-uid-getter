@@ -2,7 +2,7 @@
     "name": "Getting UCHI user UID",
     "description": "My little Devtool, which getting UID from cookie and save to clipboard.",
     "author": "Ohotnikov Alexandr",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "manifest_version": 3,
     "host_permissions": [
         "*://*.uchi.ru/",

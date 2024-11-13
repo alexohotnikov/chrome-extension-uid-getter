@@ -40,3 +40,21 @@ const clickHandler = function () {
 if (buttonElement) {
     buttonElement.addEventListener('click', clickHandler);
 }
+
+
+window.addEventListener('load', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+        var activeTab = tabs[0];
+        var _origin = activeTab.url.match(/^https?:\/\/([^\/]+)/)[0];
+
+        (async () => {
+            const response = await fetch(`${_origin}/profile/api/students/v2/students`);
+            const data = await response.json();
+            document.querySelector('#student-id').innerHTML = `<h4><a href="${_origin}/admin/students/${data.id}" target="_blank">ID студента: ${data.id}</a></h4>`;
+    
+            const studentResponse = await fetch(`${_origin}/profile/api/students/v2/students/${data.id}`);
+            const studentData = await studentResponse.json();
+            document.querySelector('#student-credentials').innerHTML = `Логин: ${studentData.login} <br /> Пароль: ${studentData.password}`;
+        })();
+      });
+});

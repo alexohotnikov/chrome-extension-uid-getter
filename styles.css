@@ -17,3 +17,13 @@ button:hover {
     background-color: rgba(74, 106, 248, 1);
     cursor: pointer;
 }
+
+#student-info p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+#student-info h4 {
+    margin: 0;
+    font-size: 14px;
+}

@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student UID</title>
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <div id="student-info">
-      <p id="student-id"></p>
-      <p id="student-credentials"></p>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>UCHi LookUp Tool</h2>
+            <div id="student-info">
+                <p><span id="student-id">N/A</span></p>
+                <p><strong>Нативный доступ:</strong><pre id="student-credentials">N/A</pre></p>
+            </div>
+            <button id="get-uid-btn">SAVE UID INTO BUFFER!</button>
+        </div>
     </div>
-    <button>GET UID NOW!</button>
     <script src="popup.js"></script>
-  </body>
+</body>
 </html>

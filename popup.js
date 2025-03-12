@@ -1,4 +1,5 @@
 const buttonElement = document.querySelector('button');
+const credentialsElement = document.querySelector('#student-credentials')
 
 const saveTextToClipboard = (text) => {
     var textArea = document.createElement("textarea");
@@ -37,8 +38,17 @@ const clickHandler = function () {
     });
 };
 
+const userCreditsClickHandler = function() {
+    const data = credentialsElement.innerHTML
+    saveTextToClipboard(data.replace('<br>', ''))
+}
+
 if (buttonElement) {
     buttonElement.addEventListener('click', clickHandler);
+}
+
+if (credentialsElement) {
+    credentialsElement.addEventListener('click', userCreditsClickHandler)
 }
 
 
@@ -54,7 +64,7 @@ window.addEventListener('load', () => {
     
             const studentResponse = await fetch(`${_origin}/profile/api/students/v2/students/${data.id}`);
             const studentData = await studentResponse.json();
-            document.querySelector('#student-credentials').innerHTML = `Логин: ${studentData.login} <br /> Пароль: ${studentData.password}`;
+            document.querySelector('#student-credentials').innerHTML = `Логин: ${studentData.login} <br />Пароль: ${studentData.password}`;
         })();
       });
 });

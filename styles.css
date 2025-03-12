@@ -1,29 +1,112 @@
-button {
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+}
+
+body {
+    background: transparent;
     display: flex;
-    font-size: 24px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Карточка */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    min-width: 350px;
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+/* Заголовок */
+h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Информация о студенте */
+#student-info p {
+    font-size: 17px;
+    color: #444;
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+#student-info p strong {
+    color: #222;
+}
+
+/* ID студента (ссылка) */
+#student-id a {
+    color: #4A6AF8;
     font-weight: bold;
-    white-space: nowrap;
-    padding: 10px 15px;
-    line-height: 40px;
-    background-color: rgba(74, 106, 248, 0.7);
-    border-radius: 8px;
-    box-shadow: none;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+#student-id a:hover {
+    color: #1E3A8A;
+    text-decoration: underline;
+}
+
+/* Кнопка */
+button {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 24px;
+    margin-top: 20px;
     border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #4A6AF8, #1E3A8A);
     color: white;
+    cursor: pointer;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 button:hover {
-    transition: all .25s ease-in-out;
-    background-color: rgba(74, 106, 248, 1);
+    background: linear-gradient(135deg, #1E3A8A, #4A6AF8);
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: scale(0.98);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+pre {
+    position: relative;
+    background-color: #EDEDED;
+    border-radius: 12px;
+    padding: 12px 18px;
+    text-align: left;
+    font-size: 18px;
+}
+
+pre::before {
+    content: '✏️';
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 1em;
+    color: blue;
     cursor: pointer;
-}
-
-#student-info p {
-    margin: 10px 0;
-    font-size: 16px;
-}
-
-#student-info h4 {
-    margin: 0;
-    font-size: 14px;
 }

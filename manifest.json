@@ -2,8 +2,11 @@
     "name": "Getting UCHI user UID",
     "description": "My little Devtool, which getting UID from cookie and save to clipboard.",
     "author": "Ohotnikov Alexandr",
-    "version": "1.2.0",
+    "version": "2.0.0",
     "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+      },
     "host_permissions": [
         "*://*.uchi.ru/",
         "*://*.shot-uchi.ru/",
@@ -17,10 +20,17 @@
         "storage"
     ],
     "icons": {
-        "16": "icons/icon.png",
-        "48": "icons/icon.png",
-        "128": "icons/icon.png"
+        "16": "icons/icon_white.png",
+        "48": "icons/icon_white.png",
+        "128": "icons/icon_white.png"
     },
+    "theme_icons": [
+        {
+          "light": "icons/icon_black.png",
+          "dark": "icons/icon_white.png",
+          "size": 128
+        }
+      ],
     "action": {
         "default_popup": "popup.html"
     }

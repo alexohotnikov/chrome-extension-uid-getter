@@ -7,62 +7,6 @@ const UI = {
     loader: document.querySelector('.loader-container')
 };
 
-// Modern clipboard API usage
-async function copyToClipboard(text) {
-    try {
-        await navigator.clipboard.writeText(text);
-        showFeedback('Скопировано!');
-        setTimeout(() => window.close(), 1000);
-    } catch (err) {
-        console.error('Failed to copy:', err);
-        // Fallback to old method
-        fallbackCopyToClipboard(text);
-    }
-}
-
-// Fallback copy method
-function fallbackCopyToClipboard(text) {
-    const textArea = document.createElement('textarea');
-    textArea.value = text;
-    textArea.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-
-    try {
-        document.execCommand('copy');
-        showFeedback('Скопировано!');
-        setTimeout(() => window.close(), 1000);
-    } catch (err) {
-        console.error('Fallback copy failed:', err);
-        showFeedback('Ошибка копирования', true);
-    } finally {
-        document.body.removeChild(textArea);
-    }
-}
-
-// Feedback UI
-function showFeedback(message, isError = false) {
-    const feedback = document.createElement('div');
-    feedback.className = `feedback ${isError ? 'error' : 'success'}`;
-    feedback.textContent = message;
-    feedback.style.cssText = `
-        position: fixed;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 6px 12px;
-        border-radius: 6px;
-        background: ${isError ? '#fee2e2' : '#ecfdf5'};
-        color: ${isError ? '#dc2626' : '#059669'};
-        font-size: 12px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        z-index: 1000;
-    `;
-    document.body.appendChild(feedback);
-    setTimeout(() => feedback.remove(), 3000);
-}
-
 // Show/Hide loader functions
 function showCredentialsLoader() {
     UI.loader.style.display = 'flex';
@@ -72,6 +16,26 @@ function showCredentialsLoader() {
 function hideCredentialsLoader() {
     UI.loader.style.display = 'none';
     UI.credentialsContent.classList.add('visible');
+}
+
+// Copy text helper
+async function copyToClipboard(text) {
+    try {
+        await navigator.clipboard.writeText(text);
+        showFeedback('Скопировано!');
+        setTimeout(() => window.close(), 1000);
+    } catch (err) {
+        console.error('Failed to copy:', err);
+        showFeedback('Ошибка копирования', true);
+    }
+}
+
+// Credentials copy handler
+function handleCredentialsCopy() {
+    const data = UI.credentials.innerHTML
+        .replace('<br>', '\n')  // Заменяем HTML перенос на текстовый
+        .replace(/&nbsp;/g, ' '); // Заменяем HTML пробелы на обычные
+    copyToClipboard(data);
 }
 
 // Load credentials data
@@ -98,6 +62,12 @@ async function loadCredentialsData() {
         UI.credentials.innerHTML = `Логин: ${details.login}<br>Пароль: ${details.password}`;
         
         hideCredentialsLoader();
+        
+        // Добавляем обработчик клика после загрузки данных
+        UI.credentials.addEventListener('click', handleCredentialsCopy);
+        // Добавляем визуальную подсказку
+        UI.credentials.title = 'Нажмите чтобы скопировать';
+        UI.credentials.style.cursor = 'pointer';
     } catch (err) {
         console.error('Error loading credentials:', err);
         UI.loader.innerHTML = `
@@ -121,9 +91,7 @@ async function handleUidCopy() {
         });
         
         if (cookie?.value) {
-            await navigator.clipboard.writeText(cookie.value);
-            showFeedback('UID скопирован!');
-            setTimeout(() => window.close(), 1000);
+            await copyToClipboard(cookie.value);
         } else {
             showFeedback('UID не найден', true);
         }
@@ -131,6 +99,28 @@ async function handleUidCopy() {
         console.error('Error copying UID:', err);
         showFeedback('Ошибка копирования', true);
     }
+}
+
+// Feedback function
+function showFeedback(message, isError = false) {
+    const feedback = document.createElement('div');
+    feedback.className = `feedback ${isError ? 'error' : 'success'}`;
+    feedback.textContent = message;
+    feedback.style.cssText = `
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 6px 12px;
+        border-radius: 6px;
+        background: ${isError ? '#fee2e2' : '#ecfdf5'};
+        color: ${isError ? '#dc2626' : '#059669'};
+        font-size: 12px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        z-index: 1000;
+    `;
+    document.body.appendChild(feedback);
+    setTimeout(() => feedback.remove(), 3000);
 }
 
 // Event Listeners

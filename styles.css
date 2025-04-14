@@ -1,9 +1,9 @@
-/* Общие стили */
+/* Обновленные общие стили */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Arial", sans-serif;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
 body {
@@ -14,34 +14,37 @@ body {
     height: 100vh;
 }
 
-/* Карточка */
+/* Обновленная карточка */
 .card {
     background: white;
-    padding: 30px;
-    border-radius: 14px;
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
-    min-width: 350px;
-    transition: transform 0.2s ease-in-out;
-    position: relative;
+    width: 300px;
+    transition: all 0.3s ease;
 }
 
-.card:hover {
-    transform: translateY(-4px);
-}
-
-/* Заголовок */
+/* Обновленный заголовок */
 h2 {
-    font-size: 22px;
-    color: #333;
+    font-size: 20px;
+    color: #1a1a1a;
     margin-bottom: 15px;
+    font-weight: 600;
 }
 
-/* Информация о студенте */
+h3 {
+    font-size: 16px;
+    color: #4a5568;
+    margin: 15px 0 10px;
+    font-weight: 500;
+}
+
+/* Обновленная информация о студенте */
 #student-info p {
-    font-size: 17px;
-    color: #444;
-    margin: 10px 0;
+    font-size: 14px;
+    color: #4a5568;
+    margin: 8px 0;
     line-height: 1.4;
 }
 
@@ -62,28 +65,26 @@ h2 {
     text-decoration: underline;
 }
 
-/* Кнопка */
+/* Обновленная кнопка */
 button {
     display: inline-block;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 12px 24px;
-    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    margin: 10px 0;
     border: none;
     border-radius: 8px;
-    background: linear-gradient(135deg, #4A6AF8, #1E3A8A);
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
     color: white;
     cursor: pointer;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    width: 100%;
 }
 
 button:hover {
-    background: linear-gradient(135deg, #1E3A8A, #4A6AF8);
-    transform: scale(1.05);
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
 button:active {
@@ -91,22 +92,161 @@ button:active {
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
 }
 
-
+/* Обновленный pre элемент */
 pre {
-    position: relative;
-    background-color: #EDEDED;
+    background-color: #f8fafc;
     border-radius: 12px;
-    padding: 12px 18px;
+    padding: 16px 20px;
     text-align: left;
-    font-size: 18px;
+    font-size: 16px;
+    border: 1px solid #e2e8f0;
+    margin: 15px 0;
+    position: relative;
 }
 
 pre::before {
-    content: '✏️';
+    content: '📋';
     position: absolute;
-    top: 5px;
-    right: 10px;
-    font-size: 1em;
-    color: blue;
+    top: 8px;
+    right: 12px;
+    font-size: 1.1em;
+    opacity: 0.7;
     cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+pre:hover::before {
+    opacity: 1;
+}
+
+/* Loader styles */
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    margin: 10px 0;
+}
+
+.loader {
+    text-align: center;
+    transform: scale(0.8);
+}
+
+.loader-circle {
+    width: 50px;
+    height: 50px;
+    transform-origin: center;
+    animation: rotate 2s linear infinite;
+}
+
+.loader-path {
+    fill: none;
+    stroke: #3b82f6;
+    stroke-width: 4;
+    stroke-dasharray: 125.6;
+    stroke-dashoffset: 125.6;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+}
+
+.loader-text {
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 125.6;
+    }
+    50% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: -125.6;
+    }
+}
+
+/* Fade in animation for content */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#credentials-content.visible {
+    display: block !important;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Skeleton loading effect */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        #f0f0f0 25%,
+        #f8f8f8 50%,
+        #f0f0f0 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+    height: 20px;
+    margin: 10px 0;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Error state styles */
+.error-state {
+    text-align: center;
+    padding: 20px;
+}
+
+.retry-button {
+    margin-top: 15px;
+    padding: 8px 16px;
+    font-size: 14px;
+    background: #dc2626;
+}
+
+.retry-button:hover {
+    background: #b91c1c;
+}
+
+/* Секция с credentials */
+.credentials-section {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+/* Обновленные стили для credentials */
+#student-credentials {
+    background-color: #f8fafc;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    border: 1px solid #e2e8f0;
+    margin: 8px 0;
+    position: relative;
+    width: calc(100% - 32px);
 }

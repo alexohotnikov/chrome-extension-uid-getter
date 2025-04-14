@@ -1,20 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student UID</title>
+    <title>UCHi LookUp Tool</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div class="card">
             <h2>UCHi LookUp Tool</h2>
-            <div id="student-info">
-                <p><span id="student-id">N/A</span></p>
-                <p><strong>Нативный доступ:</strong><pre id="student-credentials">N/A</pre></p>
+            <button id="get-uid-btn">Копировать UID</button>
+            
+            <div class="credentials-section">
+                <h3>Нативный доступ</h3>
+                <!-- Loader только для секции с credentials -->
+                <div class="loader-container">
+                    <div class="loader">
+                        <svg class="loader-circle" viewBox="25 25 50 50">
+                            <circle class="loader-path" cx="50" cy="50" r="20"></circle>
+                        </svg>
+                        <p class="loader-text">Загрузка...</p>
+                    </div>
+                </div>
+                <!-- Контент с credentials -->
+                <div id="credentials-content" style="display: none;">
+                    <div id="student-info">
+                        <p>ID: <span id="student-id">N/A</span></p>
+                        <pre id="student-credentials">N/A</pre>
+                    </div>
+                </div>
             </div>
-            <button id="get-uid-btn">SAVE UID INTO BUFFER!</button>
         </div>
     </div>
     <script src="popup.js"></script>

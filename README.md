@@ -1,4 +1,4 @@
-# ![icon](/icons/icon.png) Chrome Extension UID Getter
+# ![icon](/icons/icon_white.png) Chrome Extension UID Getter
 
 A Chrome extension that helps you quickly copy UID from cookies and access student credentials with a single click.
 

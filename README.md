@@ -29,13 +29,13 @@ A Chrome extension that helps you quickly copy UID from cookies and access stude
 
 ## Changelog
 
-### 14.03.2024:
+### 14.05.2025:
 - Improved credentials handling with better error management
 - Added visual feedback system for copy operations
 - Enhanced UI with loading states and retry functionality
 - Optimized code structure and error handling
 
-### 12.03.2024:
+### 12.03.2025:
 - Small redesign
 - Added credentials to clipboard by one click
 - Improved user interface
